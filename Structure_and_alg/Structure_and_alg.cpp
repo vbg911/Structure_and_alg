@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <ctime>
+
 using namespace std;
 void delFirstMetod(int* x, int n, int key);
 void delOtherMetod(int* x, int n, int key);
@@ -11,28 +13,46 @@ void main()
 	setlocale(LC_ALL, "Russian");
 	cout << "Задайте количество элементов массива.\n";
 	cin >> mass;
-	int* arr = new int[mass];
-	for(int i=0;i<mass;i++)
+	int* arr1 = new int[mass];
+	int* arr2 = new int[mass];
+
+	//srand(time(NULL)); // рандомное заполнение массива
+	//for (int i = 0; i < mass; i++)
+	//{
+	//	int num = rand() % 20 + 1; // случайные числа от 0 до 20
+	//	arr1[i] = num;
+	//	arr2[i] = num;
+	//}
+	
+	for(int i=0;i<mass;i++) //ручной ввод
 	{
+		int input;
 		cout << "arr[" << i << "]=";
-		cin >> arr[i];
+		cin >> input;
+		arr1[i]=input;
+		arr2[i] = input;
 	}
-	print_arr(arr,mass,"Начальный массив");
-	delFirstMetod(arr,mass,2);
+	print_arr(arr1,mass,"Начальный массив");
+	delFirstMetod(arr1,mass,2);
+	delOtherMetod(arr2, mass, 2);
 	system("pause");
 }
 
 void delFirstMetod(int* x,int n, int key) {
+	int  sravnenie=0;
+	int perestanovka=0;
 	int c_len = n;
-	int i = 1;
+	int i = 0;
 	while (i<=n)
 	{
+		sravnenie++;
 		if (x[i]==key)
 		{
 			//удаление
-			for(int j=i;j<n-1;j++)
+			for(int j=i;j<=n-1;j++)
 			{
 				x[j] = x[j + 1];
+				perestanovka++;
 			}
 			n--;
 		} else
@@ -41,19 +61,25 @@ void delFirstMetod(int* x,int n, int key) {
 		}
 	}
 	copy(x, c_len, n);
+	cout << "Затрачено перестановок на первый метод: " << perestanovka << "Проведено сравнений: " << sravnenie<<endl;
 }
 
 void delOtherMetod(int* x, int n, int key) {
+	int  sravnenie=0;
+	int perestanovka=0;
 	int c_len = n;
-	int j = 1;
-	for (int i = 1; i < n; i++) {
+	int j = 0;
+	for (int i = 0; i < n; i++) {
 		x[j] = x[i];
+		perestanovka++;
+		sravnenie++;
 		if (x[i] != key) {
 			j++;
 		}
 	}
 	n = j;
 	copy(x, c_len, n);
+	cout << "Затрачено перестановок на второй метод: " << perestanovka << "Проведено сравнений: " << sravnenie << endl;;
 }
 
 void print_arr(int* mass,int len,string name ) { // вывод массива на экран
