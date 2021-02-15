@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 using namespace std;
 void delFirstMetod(int* x, int n, int key);
 void delOtherMetod(int* x, int n, int key);
@@ -9,7 +9,7 @@ void main()
 {
 	int mass;
 	setlocale(LC_ALL, "Russian");
-	cout << "Задайте количество элементов массива.\n";
+	cout << "Р—Р°РґР°Р№С‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°.\n";
 	cin >> mass;
 	int* arr = new int[mass];
 	for(int i=0;i<mass;i++)
@@ -17,9 +17,9 @@ void main()
 		cout << "arr[" << i << "]=";
 		cin >> arr[i];
 	}
-	print_arr(arr,mass,"Начальный массив");
+	print_arr(arr,mass,"РќР°С‡Р°Р»СЊРЅС‹Р№ РјР°СЃСЃРёРІ");
 	delFirstMetod(arr,mass,2);
-	print_arr(arr,mass,"Массив после преобразования");
+	print_arr(arr,mass,"РњР°СЃСЃРёРІ РїРѕСЃР»Рµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ");
 	system("pause");
 }
 
@@ -30,7 +30,7 @@ void delFirstMetod(int* x,int n, int key) {
 	{
 		if (x[i]==key)
 		{
-			//удаление
+			//СѓРґР°Р»РµРЅРёРµ
 			for(int j=i;j<n-1;j++)
 			{
 				x[j] = x[j + 1];
@@ -57,16 +57,16 @@ void delOtherMetod(int* x, int n, int key) {
 	copy(x, c_len, n);
 }
 
-void print_arr(int* mass,int len,string name ) { // вывод массива на экран
-	cout << "------Ввывод массива (начало) "<<name<<" ------" << endl;
+void print_arr(int* mass,int len,string name ) { // РІС‹РІРѕРґ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ
+	cout << "------Р’РІС‹РІРѕРґ РјР°СЃСЃРёРІР° (РЅР°С‡Р°Р»Рѕ) "<<name<<" ------" << endl;
 	for (int i = 0; i < len; i++) {
 		cout << "mass["<<i<<"]=" << mass[i] << endl;
 	}
-	cout << "------Ввывод массива (конец) "<<name<<" ------" << endl;
+	cout << "------Р’РІС‹РІРѕРґ РјР°СЃСЃРёРІР° (РєРѕРЅРµС†) "<<name<<" ------" << endl;
 }
 
-void copy(int* tocopy,int copy_len, int final_len) { // copy_len - длина массива до копирования final_len - длина массива после копирования
-	int* temparr = new int[copy_len];// массив куда мы копируем исходный
+void copy(int* tocopy,int copy_len, int final_len) { // copy_len - РґР»РёРЅР° РјР°СЃСЃРёРІР° РґРѕ РєРѕРїРёСЂРѕРІР°РЅРёСЏ final_len - РґР»РёРЅР° РјР°СЃСЃРёРІР° РїРѕСЃР»Рµ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	int* temparr = new int[copy_len];// РјР°СЃСЃРёРІ РєСѓРґР° РјС‹ РєРѕРїРёСЂСѓРµРј РёСЃС…РѕРґРЅС‹Р№
 	for (int i = 0; i < copy_len; i++) {
 		temparr[i] = tocopy[i];
 	}
@@ -75,5 +75,5 @@ void copy(int* tocopy,int copy_len, int final_len) { // copy_len - длина массива
 		copy[i] = temparr[i];
 	}
 	delete[]temparr;
-	print_arr(copy, final_len,"Функция copy");
+	print_arr(copy, final_len,"Р¤СѓРЅРєС†РёСЏ copy");
 }
