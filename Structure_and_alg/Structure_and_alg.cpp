@@ -19,7 +19,6 @@ void main()
 	}
 	print_arr(arr,mass,"Начальный массив");
 	delFirstMetod(arr,mass,2);
-	print_arr(arr,mass,"Массив после преобразования");
 	system("pause");
 }
 
