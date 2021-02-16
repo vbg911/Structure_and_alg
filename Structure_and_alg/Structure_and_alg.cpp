@@ -16,22 +16,22 @@ void main()
 	int* arr1 = new int[mass];
 	int* arr2 = new int[mass];
 
-	//srand(time(NULL)); // рандомное заполнение массива
-	//for (int i = 0; i < mass; i++)
-	//{
-	//	int num = rand() % 20 + 1; // случайные числа от 0 до 20
-	//	arr1[i] = num;
-	//	arr2[i] = num;
-	//}
-	
-	for(int i=0;i<mass;i++) //ручной ввод
+	srand(time(NULL)); // рандомное заполнение массива
+	for (int i = 0; i < mass; i++)
 	{
-		int input;
-		cout << "arr[" << i << "]=";
-		cin >> input;
-		arr1[i]=input;
-		arr2[i] = input;
+		int num = rand() % 20 + 1; // случайные числа от 0 до 20
+		arr1[i] = num;
+		arr2[i] = num;
 	}
+	
+	//for(int i=0;i<mass;i++) //ручной ввод
+	//{
+	//	int input;
+	//	cout << "arr[" << i << "]=";
+	//	cin >> input;
+	//	arr1[i]=input;
+	//	arr2[i] = input;
+	//}
 	print_arr(arr1,mass,"Начальный массив");
 	delFirstMetod(arr1,mass,2);
 	delOtherMetod(arr2, mass, 2);
@@ -39,6 +39,7 @@ void main()
 }
 
 void delFirstMetod(int* x,int n, int key) {
+	int t1 = clock();
 	int  sravnenie=0;
 	int perestanovka=0;
 	int c_len = n;
@@ -62,9 +63,13 @@ void delFirstMetod(int* x,int n, int key) {
 	}
 	copy(x, c_len, n);
 	cout << "Затрачено перестановок на первый метод: " << perestanovka << "Проведено сравнений: " << sravnenie<<endl;
+	int t2 = clock();
+	int final_time = t2 - t1;
+	cout << "Время на выполнение первого метода (миллисекунды): " << final_time << endl;
 }
 
 void delOtherMetod(int* x, int n, int key) {
+	int t1 = clock();
 	int  sravnenie=0;
 	int perestanovka=0;
 	int c_len = n;
@@ -80,6 +85,9 @@ void delOtherMetod(int* x, int n, int key) {
 	n = j;
 	copy(x, c_len, n);
 	cout << "Затрачено перестановок на второй метод: " << perestanovka << "Проведено сравнений: " << sravnenie << endl;;
+	int t2 = clock();
+	int final_time = t2 - t1;
+	cout << "Время на выполнение второго метода (миллисекунды): " << final_time << endl;
 }
 
 void print_arr(int* mass,int len,string name ) { // вывод массива на экран
